@@ -26,7 +26,7 @@ export function TextElement() {
           rectangleDepth={0.06} // Depth for this rectangle
 
         >
-          sami engineer
+          Welcome to CIS :)
         </Text>
       </mesh>
 
