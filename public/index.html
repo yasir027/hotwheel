@@ -1,13 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My 3D Website!</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* CSS for loader animation */
+        .loader {
+            font-size: 30px;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-sizing: border-box;
+            text-align: center;
+            text-transform: uppercase;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            z-index: 9999;
+            /* Ensure loader is on top */
+        }
+
+        .loader:before,
+        .loader:after {
+            opacity: 0;
+            box-sizing: border-box;
+            content: "\0020";
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 0 50px #e52222, inset 0 0 50px #b82424;
+        }
+
+        .loader:after {
+            animation: loading 2s infinite 1s;
+        }
+
+        .loader:before {
+            animation: loading 2s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Hide loader after page is loaded */
+        body.loaded .loader {
+            display: none;
+        }
+    </style>
+    <script>
+        // JavaScript to add 'loaded' class to body after page is loaded
+        window.addEventListener('load', function () {
+            document.body.classList.add('loaded');
+        });
+    </script>
 </head>
+
 <body>
+    <!-- Loader displayed during page loading -->
     <div class="loader">CIS</div>
-    
+    <!-- Content of your website -->
+    <div id="root"></div>
+    <!-- Your JavaScript file should be included at the end of the body -->
+    <script src="your-script-file.js"></script>
 </body>
+
 </html>
